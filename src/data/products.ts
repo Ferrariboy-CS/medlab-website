@@ -7,6 +7,8 @@ export interface Product {
   image: string;
   subcategory?: string;
   features?: string[];
+  price?: string;
+  turnaroundTime?: string;
 }
 
 export const products: Product[] = [
@@ -20,6 +22,7 @@ export const products: Product[] = [
     image: '/images/products/ecg-12ch.jpg',
     subcategory: '12-Lead ECG',
     features: ['12-lead simultaneous acquisition', 'Auto interpretation', 'WiFi connectivity'],
+    turnaroundTime: '2-3 weeks',
   },
   {
     id: 'ecg-002',
@@ -30,6 +33,7 @@ export const products: Product[] = [
     image: '/images/products/ecg-portable.jpg',
     subcategory: 'Portable ECG',
     features: ['Lightweight design', 'Battery powered', 'Bluetooth enabled'],
+    turnaroundTime: '1-2 weeks',
   },
   {
     id: 'ecg-003',
@@ -50,6 +54,7 @@ export const products: Product[] = [
     image: '/images/products/monitor-bedside.jpg',
     subcategory: 'Bedside Monitors',
     features: ['15" HD display', '6 parameters', 'Trending & alarms'],
+    turnaroundTime: '2-4 weeks',
   },
   {
     id: 'pm-002',
@@ -82,6 +87,7 @@ export const products: Product[] = [
     image: '/images/products/ultrasound-portable.jpg',
     subcategory: 'Portable Ultrasound',
     features: ['Tablet design', 'Multiple probes', 'DICOM compatible'],
+    turnaroundTime: '3-4 weeks',
   },
   {
     id: 'us-002',
@@ -104,6 +110,7 @@ export const products: Product[] = [
     image: '/images/products/aed.jpg',
     subcategory: 'AED',
     features: ['Voice prompts', 'CPR feedback', '5-year battery'],
+    turnaroundTime: '1-2 weeks',
   },
   {
     id: 'df-002',
@@ -126,6 +133,7 @@ export const products: Product[] = [
     image: '/images/products/centrifuge-micro.jpg',
     subcategory: 'Microcentrifuges',
     features: ['15,000 RPM', 'Quick-spin function', 'Low noise'],
+    turnaroundTime: '2-3 weeks',
   },
   {
     id: 'cf-002',
@@ -148,6 +156,7 @@ export const products: Product[] = [
     image: '/images/products/microscope-compound.jpg',
     subcategory: 'Compound Microscopes',
     features: ['4x, 10x, 40x, 100x objectives', 'LED illumination', 'Mechanical stage'],
+    turnaroundTime: '2-3 weeks',
   },
   {
     id: 'ms-002',
@@ -170,6 +179,7 @@ export const products: Product[] = [
     image: '/images/products/analyzer-hematology.jpg',
     subcategory: 'Hematology',
     features: ['5-part differential', '60 tests/hour', 'Auto sampler'],
+    turnaroundTime: '4-6 weeks',
   },
   {
     id: 'an-002',
@@ -217,6 +227,7 @@ export const products: Product[] = [
     image: '/images/products/skeleton.jpg',
     subcategory: 'Skeletal Models',
     features: ['Life-size', 'Movable joints', 'Wheeled stand'],
+    price: 'N$ 6,950',
   },
   {
     id: 'am-002',
@@ -237,6 +248,7 @@ export const products: Product[] = [
     image: '/images/products/cpr-manikin.jpg',
     subcategory: 'CPR Manikins',
     features: ['Clicker feedback', 'Replaceable lungs', 'Carrying case'],
+    price: 'N$ 8,400',
   },
   {
     id: 'tm-002',
@@ -257,6 +269,7 @@ export const products: Product[] = [
     image: '/images/products/first-aid-office.jpg',
     subcategory: 'Office Kits',
     features: ['Metal cabinet', 'Wall mountable', 'Refillable'],
+    price: 'N$ 2,150',
   },
   {
     id: 'fa-002',

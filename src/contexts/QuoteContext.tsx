@@ -21,7 +21,7 @@ const QuoteContext = createContext<QuoteContextType | undefined>(undefined);
 
 export const QuoteProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [items, setItems] = useState<QuoteItem[]>(() => {
-    const saved = localStorage.getItem('quoteItems');
+    const saved = localStorage.getItem('requestItems');
     if (saved) {
       try {
         return JSON.parse(saved);
@@ -35,7 +35,7 @@ export const QuoteProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
   // Persist to localStorage whenever items change
   useEffect(() => {
-    localStorage.setItem('quoteItems', JSON.stringify(items));
+    localStorage.setItem('requestItems', JSON.stringify(items));
   }, [items]);
 
   const addItem = (product: Product) => {
@@ -100,4 +100,3 @@ export const useQuote = () => {
   }
   return context;
 };
-

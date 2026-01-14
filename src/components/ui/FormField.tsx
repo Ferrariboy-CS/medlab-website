@@ -44,7 +44,7 @@ export const FormField: React.FC<FormFieldProps> = ({
     disabled:opacity-50 disabled:cursor-not-allowed
     ${error 
       ? 'border-red-300 dark:border-red-500 focus:border-red-500' 
-      : 'border-gray-200 dark:border-slate-600 focus:border-sky-500 dark:focus:border-sky-400'
+      : 'border-gray-200 dark:border-slate-600 focus:border-red-500 dark:focus:border-red-400'
     }
     ${icon ? 'pl-11' : 'px-4'}
   `;
@@ -110,7 +110,7 @@ export const FormField: React.FC<FormFieldProps> = ({
               bg-gray-50 dark:bg-slate-800/50
               text-gray-500 dark:text-slate-400
               cursor-pointer
-              hover:border-sky-400 hover:bg-sky-50 dark:hover:bg-sky-950/30
+              hover:border-red-400 hover:bg-red-50 dark:hover:bg-red-950/30
               transition-all duration-200
             `}
           >
