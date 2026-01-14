@@ -4,7 +4,6 @@ import { XMarkIcon, TrashIcon } from '@heroicons/react/24/outline';
 import { CheckCircleIcon } from '@heroicons/react/24/solid';
 import { useQuote } from '../../contexts';
 import { Button } from './Button';
-import type { Product } from '../../data/products';
 
 export const QuoteDrawer: React.FC = () => {
   const { items, removeItem, updateQuantity, clearQuote, isOpen, setIsOpen, itemCount } =

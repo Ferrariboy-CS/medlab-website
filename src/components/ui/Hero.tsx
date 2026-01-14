@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Button } from './Button';
@@ -52,45 +52,45 @@ export const Hero: React.FC<HeroProps> = ({
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: 'easeOut' },
+      transition: { duration: 0.6 },
     },
   };
 
+  const heroRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (!heroRef.current) return;
+
+    if (backgroundImage) {
+      heroRef.current.style.setProperty('--hero-bg-image', `url(${backgroundImage})`);
+      heroRef.current.classList.add('hero-bg-image');
+    } else {
+      heroRef.current.style.removeProperty('--hero-bg-image');
+      heroRef.current.classList.remove('hero-bg-image');
+    }
+  }, [backgroundImage]);
+
   return (
     <div
+      ref={heroRef}
       className={`
         relative ${heights[size]} overflow-hidden
         bg-gradient-to-br from-slate-900 via-sky-900 to-blue-900
         dark:from-slate-950 dark:via-slate-900 dark:to-slate-950
+        ${backgroundImage ? 'hero-bg-image' : ''}
       `}
-      style={
-        backgroundImage
-          ? {
-              backgroundImage: `url(${backgroundImage})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-            }
-          : undefined
-      }
     >
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Gradient Orbs */}
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-sky-500/30 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-500/20 rounded-full blur-3xl animate-pulse animation-delay-1s" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl" />
         
         {/* Grid Pattern */}
         {pattern && (
           <div 
-            className="absolute inset-0 opacity-10"
-            style={{
-              backgroundImage: `
-                linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
-              `,
-              backgroundSize: '50px 50px',
-            }}
+            className="absolute inset-0 opacity-10 pattern-grid"
           />
         )}
         
@@ -164,8 +164,7 @@ export const Hero: React.FC<HeroProps> = ({
           {description && (
             <motion.p 
               variants={itemVariants}
-              className="mt-6 text-lg md:text-xl text-sky-100/90 leading-relaxed max-w-2xl"
-              style={centered ? { margin: '1.5rem auto' } : undefined}
+              className={`mt-6 text-lg md:text-xl text-sky-100/90 leading-relaxed max-w-2xl ${centered ? 'mx-auto' : ''}`}
             >
               {description}
             </motion.p>

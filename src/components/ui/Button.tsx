@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger';
   size?: 'sm' | 'md' | 'lg';
-  as?: 'button' | 'link';
+  as?: 'button' | 'link' | 'span';
   to?: string;
   loading?: boolean;
   icon?: React.ReactNode;
@@ -29,43 +29,41 @@ export const Button: React.FC<ButtonProps> = ({
   ...props
 }) => {
   const baseStyles = `
-    inline-flex items-center justify-center font-semibold rounded-xl 
-    transition-all duration-300 ease-out
+    inline-flex items-center justify-center font-semibold rounded-lg
+    transition-colors duration-200
     focus:outline-none focus:ring-2 focus:ring-offset-2
     disabled:opacity-50 disabled:cursor-not-allowed
-    transform hover:scale-[1.02] active:scale-[0.98]
   `;
 
   const variants = {
     primary: `
-      bg-gradient-to-r from-sky-500 to-blue-600 text-white 
-      hover:from-sky-600 hover:to-blue-700 
-      focus:ring-sky-500 
-      shadow-lg shadow-sky-500/25 hover:shadow-xl hover:shadow-sky-500/30
-      dark:shadow-sky-500/10 dark:hover:shadow-sky-500/20
+      bg-red-600 text-white border border-red-600
+      hover:bg-red-700 hover:border-red-700
+      focus:ring-red-500
+      shadow-sm
     `,
     secondary: `
-      bg-gradient-to-r from-emerald-500 to-teal-600 text-white 
-      hover:from-emerald-600 hover:to-teal-700 
-      focus:ring-emerald-500 
-      shadow-lg shadow-emerald-500/25 hover:shadow-xl hover:shadow-emerald-500/30
+      bg-red-600 text-white border border-red-600
+      hover:bg-red-700 hover:border-red-700
+      focus:ring-red-500
+      shadow-sm
     `,
     outline: `
-      border-2 border-sky-500 text-sky-600 
-      hover:bg-sky-50 hover:border-sky-600 
-      focus:ring-sky-500
-      dark:text-sky-400 dark:border-sky-400 dark:hover:bg-sky-950
+      border-2 border-red-600 text-red-700
+      hover:bg-red-50 hover:text-red-700
+      focus:ring-red-500
+      dark:text-red-200 dark:border-red-500 dark:hover:bg-red-950
     `,
     ghost: `
-      text-sky-600 hover:bg-sky-50 
-      focus:ring-sky-500
-      dark:text-sky-400 dark:hover:bg-sky-950
+      text-red-700 hover:bg-red-50
+      focus:ring-red-500
+      dark:text-red-200 dark:hover:bg-red-950
     `,
     danger: `
-      bg-gradient-to-r from-red-500 to-rose-600 text-white 
-      hover:from-red-600 hover:to-rose-700 
-      focus:ring-red-500 
-      shadow-lg shadow-red-500/25
+      bg-red-600 text-white border border-red-600
+      hover:bg-red-700 hover:border-red-700
+      focus:ring-red-500
+      shadow-sm
     `,
   };
 
@@ -119,11 +117,18 @@ export const Button: React.FC<ButtonProps> = ({
     );
   }
 
+  if (as === 'span') {
+    return (
+      <motion.span className={classes} {...(props as any)}>
+        {content}
+      </motion.span>
+    );
+  }
+
   return (
     <motion.button 
       className={classes} 
       disabled={disabled || loading}
-      whileTap={{ scale: 0.98 }}
       {...(props as any)}
     >
       {content}
@@ -148,16 +153,16 @@ export const IconButton: React.FC<IconButtonProps> = ({
   ...props
 }) => {
   const baseStyles = `
-    inline-flex items-center justify-center rounded-xl
-    transition-all duration-200
+    inline-flex items-center justify-center rounded-lg
+    transition-colors duration-200
     focus:outline-none focus:ring-2 focus:ring-offset-2
   `;
 
   const variants = {
-    primary: 'bg-sky-600 text-white hover:bg-sky-700 focus:ring-sky-500',
-    secondary: 'bg-gray-200 text-gray-700 hover:bg-gray-300 focus:ring-gray-500 dark:bg-gray-700 dark:text-gray-200',
-    outline: 'border-2 border-gray-300 text-gray-700 hover:bg-gray-50 focus:ring-gray-500 dark:border-gray-600 dark:text-gray-300',
-    ghost: 'text-gray-600 hover:bg-gray-100 focus:ring-gray-500 dark:text-gray-400 dark:hover:bg-gray-800',
+    primary: 'bg-red-600 text-white hover:bg-red-700 focus:ring-red-500',
+    secondary: 'bg-red-600 text-white hover:bg-red-700 focus:ring-red-500',
+    outline: 'border-2 border-red-600 text-red-700 hover:bg-red-50 focus:ring-red-500 dark:text-red-200 dark:border-red-500 dark:hover:bg-red-950',
+    ghost: 'text-red-700 hover:bg-red-50 focus:ring-red-500 dark:text-red-200 dark:hover:bg-red-950',
   };
 
   const sizes = {

@@ -1,12 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { 
-  MapPinIcon, 
-  PhoneIcon, 
-  EnvelopeIcon,
-  HeartIcon
-} from '@heroicons/react/24/outline';
+import logo from '../../assets/logo/medlab-logo.svg';
 
 const footerLinks = {
   products: [
@@ -17,105 +12,91 @@ const footerLinks = {
   ],
   company: [
     { name: 'About Us', to: '/about' },
-    { name: 'Solutions', to: '/solutions' },
-    { name: 'Service & Support', to: '/service-support' },
+    { name: 'Vacancies', to: '/vacancies' },
     { name: 'Contact', to: '/contact' },
   ],
   support: [
-    { name: 'Technical Support', to: '/service-support#technical' },
-    { name: 'Request a Quote', to: '/contact#quote' },
+    { name: 'Request a Quote', to: '/contact' },
     { name: 'Downloads', to: '/#resources' },
-    { name: 'FAQs', to: '/service-support#faqs' },
+    { name: 'FAQs', to: '/contact' },
   ],
 };
 
 const socialLinks = [
-  { name: 'Facebook', href: '#', icon: 'F' },
-  { name: 'LinkedIn', href: '#', icon: 'in' },
-  { name: 'Twitter', href: '#', icon: 'X' },
+  {
+    name: 'Facebook',
+    href: 'https://www.facebook.com/festushelao.shatipamba/',
+    icon: (
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 24 24"
+        className="w-4 h-4"
+        fill="currentColor"
+      >
+        <path d="M13.5 9H15V6h-1.5C11.57 6 10 7.57 10 9.5V11H8v3h2v5h3v-5h2.07L16 11h-3v-1.5c0-.55.45-1 1-1Z" />
+      </svg>
+    ),
+  },
+  {
+    name: 'Instagram',
+    href: 'https://www.instagram.com/helao_nafimane?igsh=MWJpZmY1anl4ZW56bA==',
+    icon: (
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 24 24"
+        className="w-4 h-4"
+        fill="currentColor"
+      >
+        <path d="M7 4h10a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3Zm0 2a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H7Zm5 2.5A3.5 3.5 0 1 1 8.5 12 3.5 3.5 0 0 1 12 8.5Zm0 2a1.5 1.5 0 1 0 1.5 1.5A1.5 1.5 0 0 0 12 10.5Zm4.25-3.25a.75.75 0 1 1-.75.75.75.75 0 0 1 .75-.75Z" />
+      </svg>
+    ),
+  },
+  {
+    name: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/festus-helao-shatipamba',
+    icon: (
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 24 24"
+        className="w-4 h-4"
+        fill="currentColor"
+      >
+        <path d="M6.94 9.5V18H4V9.5h2.94ZM5.5 6A1.5 1.5 0 1 1 4 7.5 1.5 1.5 0 0 1 5.5 6ZM20 18h-3v-4.25c0-1.2-.45-1.9-1.39-1.9-.93 0-1.61.63-1.61 1.9V18h-3V9.5h2.86v1.13a3.3 3.3 0 0 1 2.94-1.26C18.63 9.37 20 10.6 20 13.1Z" />
+      </svg>
+    ),
+  },
 ];
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="relative bg-slate-900 dark:bg-slate-950 text-gray-300 overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0 pattern-medical" />
-      </div>
-      
-      {/* Gradient Orb */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-sky-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
-          {/* Company Info */}
-          <div className="lg:col-span-2">
-            <Link to="/" className="inline-flex items-center space-x-3 mb-6 group">
-              <motion.div 
-                className="
-                  w-12 h-12 
-                  bg-gradient-to-br from-sky-500 to-blue-600 
-                  rounded-xl flex items-center justify-center
-                  shadow-lg shadow-sky-500/20
-                  group-hover:shadow-xl group-hover:shadow-sky-500/30
-                  transition-shadow
-                "
-                whileHover={{ scale: 1.05 }}
-              >
-                <span className="text-white font-bold text-2xl">M</span>
-              </motion.div>
-              <span className="text-2xl font-bold text-white">Medlab Services</span>
+    <footer className="bg-slate-100 text-slate-700 dark:bg-slate-900 dark:text-slate-200 border-t border-slate-200 dark:border-slate-800">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 items-start">
+          {/* Logo */}
+          <div className="flex flex-col gap-4">
+            <Link to="/" className="inline-flex items-center" aria-label="Medlab Home">
+              <motion.img
+                src={logo}
+                alt="Medlab Services logo"
+                className="h-12 w-auto"
+                whileHover={{ scale: 1.02 }}
+              />
             </Link>
-            
-            <p className="text-slate-400 mb-6 max-w-sm leading-relaxed">
-              Trusted medical and laboratory solutions for Namibia since 1986. 
-              Supplying hospitals, laboratories, educational institutions, and industry nationwide.
+            <p className="text-sm text-slate-500 dark:text-slate-400 max-w-xs">
+              Trusted medical and laboratory solutions for Namibia since 1986.
             </p>
-            
-            <div className="space-y-4">
-              <a 
-                href="https://maps.google.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 text-slate-400 hover:text-sky-400 transition-colors group"
-              >
-                <div className="w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center group-hover:bg-sky-950 transition-colors">
-                  <MapPinIcon className="w-5 h-5 text-sky-500" />
-                </div>
-                <span>Windhoek, Namibia</span>
-              </a>
-              <a 
-                href="tel:+264611234567"
-                className="flex items-center gap-3 text-slate-400 hover:text-sky-400 transition-colors group"
-              >
-                <div className="w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center group-hover:bg-sky-950 transition-colors">
-                  <PhoneIcon className="w-5 h-5 text-sky-500" />
-                </div>
-                <span>+264 61 123 4567</span>
-              </a>
-              <a 
-                href="mailto:info@medlabservices.com.na"
-                className="flex items-center gap-3 text-slate-400 hover:text-sky-400 transition-colors group"
-              >
-                <div className="w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center group-hover:bg-sky-950 transition-colors">
-                  <EnvelopeIcon className="w-5 h-5 text-sky-500" />
-                </div>
-                <span>info@medlabservices.com.na</span>
-              </a>
-            </div>
           </div>
 
-          {/* Products */}
+          {/* Services */}
           <div>
-            <h3 className="text-white font-semibold mb-5 text-lg">Products</h3>
-            <ul className="space-y-3">
+            <h3 className="text-base font-semibold text-slate-800 dark:text-white mb-3">Services</h3>
+            <ul className="space-y-2 text-sm">
               {footerLinks.products.map((link) => (
                 <li key={link.name}>
                   <Link
                     to={link.to}
-                    className="text-slate-400 hover:text-sky-400 transition-colors text-sm inline-flex items-center gap-1 group"
+                    className="hover:text-red-600 dark:hover:text-red-400 transition-colors"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-sky-500/50 group-hover:bg-sky-400 transition-colors" />
                     {link.name}
                   </Link>
                 </li>
@@ -125,15 +106,14 @@ export const Footer: React.FC = () => {
 
           {/* Company */}
           <div>
-            <h3 className="text-white font-semibold mb-5 text-lg">Company</h3>
-            <ul className="space-y-3">
+            <h3 className="text-base font-semibold text-slate-800 dark:text-white mb-3">Company</h3>
+            <ul className="space-y-2 text-sm">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
                   <Link
                     to={link.to}
-                    className="text-slate-400 hover:text-sky-400 transition-colors text-sm inline-flex items-center gap-1 group"
+                    className="hover:text-red-600 dark:hover:text-red-400 transition-colors"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-sky-500/50 group-hover:bg-sky-400 transition-colors" />
                     {link.name}
                   </Link>
                 </li>
@@ -141,64 +121,55 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Support */}
-          <div>
-            <h3 className="text-white font-semibold mb-5 text-lg">Support</h3>
-            <ul className="space-y-3">
-              {footerLinks.support.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    to={link.to}
-                    className="text-slate-400 hover:text-sky-400 transition-colors text-sm inline-flex items-center gap-1 group"
-                  >
-                    <span className="w-1.5 h-1.5 rounded-full bg-sky-500/50 group-hover:bg-sky-400 transition-colors" />
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-
-            {/* Social Links */}
-            <div className="mt-8">
-              <h4 className="text-white font-semibold mb-4 text-sm">Follow Us</h4>
-              <div className="flex gap-3">
-                {socialLinks.map((social) => (
-                  <a
-                    key={social.name}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="
-                      w-10 h-10 rounded-xl
-                      bg-slate-800 hover:bg-sky-600
-                      flex items-center justify-center
-                      text-slate-400 hover:text-white
-                      transition-all duration-200
-                    "
-                    aria-label={social.name}
-                  >
-                    <span className="font-bold text-sm">{social.icon}</span>
-                  </a>
-                ))}
+          {/* Newsletter */}
+          <div className="w-full">
+            <h3 className="text-base font-semibold text-slate-800 dark:text-white mb-3">Stay informed</h3>
+            <p className="text-sm text-slate-500 dark:text-slate-400 mb-3">
+              Get stock availability, lead times, and sourcing updates from Medlab.
+            </p>
+            <form className="flex flex-col gap-3">
+              <div className="flex flex-col sm:flex-row gap-2">
+                <input
+                  type="email"
+                  required
+                  placeholder="Enter your email"
+                  className="flex-1 rounded-lg border border-slate-300 bg-white text-slate-800 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-100"
+                />
+                <button
+                  type="submit"
+                  className="px-4 py-2 rounded-lg bg-red-600 text-white text-sm font-semibold hover:bg-red-700 transition-colors"
+                >
+                  Subscribe
+                </button>
               </div>
-            </div>
+            </form>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="mt-16 pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-slate-500 flex items-center gap-2">
-            © {new Date().getFullYear()} Medlab Services Namibia. Made with 
-            <HeartIcon className="w-4 h-4 text-red-500" /> 
-            in Namibia
+        <div className="mt-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <p className="text-sm text-slate-500 dark:text-slate-400 flex items-center gap-2">
+            © {new Date().getFullYear()} Medlab Services cc. Crafted by ShatiScripts.
           </p>
-          <div className="flex items-center gap-6">
-            <Link to="/privacy" className="text-sm text-slate-500 hover:text-slate-300 transition-colors">
-              Privacy Policy
-            </Link>
-            <Link to="/terms" className="text-sm text-slate-500 hover:text-slate-300 transition-colors">
-              Terms of Service
-            </Link>
+          <div className="flex items-center gap-3 text-slate-500 dark:text-slate-400">
+            {socialLinks.map((social) => (
+              <a
+                key={social.name}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="
+                  w-10 h-10 rounded-full border border-slate-300 dark:border-slate-700
+                  flex items-center justify-center
+                  bg-white dark:bg-slate-800
+                  hover:border-red-500 hover:text-red-600 dark:hover:border-red-400 dark:hover:text-red-300
+                  shadow-sm hover:shadow
+                  transition-all duration-200 text-sm font-semibold
+                "
+                aria-label={social.name}
+              >
+                {React.cloneElement(social.icon, { className: 'w-5 h-5' })}
+              </a>
+            ))}
           </div>
         </div>
       </div>

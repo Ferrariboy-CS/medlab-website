@@ -124,17 +124,18 @@ export const SolutionsPage: React.FC = () => {
                   
                   <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
                     {sector.offerings.map((offering, idx) => (
-                      <motion.li 
-                        key={idx} 
-                        initial={{ opacity: 0, x: -10 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: idx * 0.1 }}
-                        className="flex items-start gap-2 text-gray-600 dark:text-slate-300"
-                      >
-                        <CheckIcon className="w-5 h-5 text-sky-500 flex-shrink-0 mt-0.5" />
-                        <span>{offering}</span>
-                      </motion.li>
+                      <li key={idx} className="flex items-start gap-2 text-gray-600 dark:text-slate-300">
+                        <motion.div
+                          initial={{ opacity: 0, x: -10 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: idx * 0.1 }}
+                          className="flex items-start gap-2"
+                        >
+                          <CheckIcon className="w-5 h-5 text-sky-500 flex-shrink-0 mt-0.5" />
+                          <span>{offering}</span>
+                        </motion.div>
+                      </li>
                     ))}
                   </ul>
 
@@ -206,7 +207,7 @@ export const SolutionsPage: React.FC = () => {
               title: 'Complete Solutions',
               description: 'From equipment to consumables, we cover all your needs.',
             },
-          ].map((item, index) => (
+          ].map((item) => (
             <AnimatedItem key={item.title}>
               <Card className="h-full">
                 <CardContent className="text-center py-10">

@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { fadeInUp, staggerContainer } from './motion';
 
 interface SectionProps {
   children: React.ReactNode;
@@ -130,15 +131,7 @@ export const AnimatedContainer: React.FC<AnimatedContainerProps> = ({
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: '-50px' }}
-      variants={{
-        hidden: { opacity: 0 },
-        visible: {
-          opacity: 1,
-          transition: {
-            staggerChildren: staggerDelay,
-          },
-        },
-      }}
+      variants={staggerContainer(staggerDelay)}
       className={className}
     >
       {children}
@@ -157,14 +150,7 @@ export const AnimatedItem: React.FC<AnimatedItemProps> = ({
 }) => {
   return (
     <motion.div
-      variants={{
-        hidden: { opacity: 0, y: 20 },
-        visible: {
-          opacity: 1,
-          y: 0,
-          transition: { duration: 0.5 },
-        },
-      }}
+      variants={fadeInUp}
       className={className}
     >
       {children}

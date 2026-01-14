@@ -4,10 +4,9 @@ import {
   HomePage,
   ProductsPage,
   CategoryPage,
-  SolutionsPage,
-  ServiceSupportPage,
   AboutPage,
   ContactPage,
+  VacanciesPage,
 } from './pages';
 
 function App() {
@@ -18,9 +17,8 @@ function App() {
           <Route index element={<HomePage />} />
           <Route path="products" element={<ProductsPage />} />
           <Route path="products/:categorySlug" element={<CategoryPage />} />
-          <Route path="solutions" element={<SolutionsPage />} />
-          <Route path="service-support" element={<ServiceSupportPage />} />
           <Route path="about" element={<AboutPage />} />
+          <Route path="vacancies" element={<VacanciesPage />} />
           <Route path="contact" element={<ContactPage />} />
         </Route>
       </Routes>

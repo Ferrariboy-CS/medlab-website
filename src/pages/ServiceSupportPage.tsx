@@ -81,7 +81,7 @@ export const ServiceSupportPage: React.FC = () => {
         </SectionTitle>
 
         <AnimatedContainer className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {serviceTypes.map((service, index) => {
+          {serviceTypes.map((service) => {
             const Icon = serviceIcons[service.iconType as keyof typeof serviceIcons];
             return (
               <AnimatedItem key={service.id}>

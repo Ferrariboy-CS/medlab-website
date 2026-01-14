@@ -3,12 +3,32 @@
 
 /* Custom CSS Variables for Medlab theme */
 :root {
+  /* Brand reds (from logo) */
+  --brand-red-100: #ffe4e6;
+  --brand-red-200: #fecdd3;
+  --brand-red-300: #fda4ac;
+  --brand-red-400: #f26b73;
+  --brand-red-500: #e63a42;
+  --brand-red-600: #d42129;
+  --brand-red-700: #b51d24;
+  --brand-red-800: #8f161d;
+
+  /* Companion blues for harmony */
+  --brand-blue-100: #e0ecfb;
+  --brand-blue-200: #c3daf7;
+  --brand-blue-300: #99bef0;
+  --brand-blue-400: #6a9add;
+  --brand-blue-500: #3f74c1;
+  --brand-blue-600: #1f5aa8;
+  --brand-blue-700: #134683;
+  --brand-blue-800: #0b3566;
+
   /* Primary Colors */
-  --color-primary: #0369a1;
-  --color-primary-dark: #075985;
-  --color-primary-light: #0ea5e9;
-  --color-secondary: #1e40af;
-  --color-accent: #10b981;
+  --color-primary: var(--brand-red-600);
+  --color-primary-dark: var(--brand-red-800);
+  --color-primary-light: var(--brand-red-400);
+  --color-secondary: var(--brand-blue-600);
+  --color-accent: var(--brand-blue-400);
   
   /* Light Theme */
   --bg-primary: #ffffff;
@@ -23,9 +43,9 @@
   --card-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   
   /* Gradient backgrounds */
-  --gradient-primary: linear-gradient(135deg, #0369a1 0%, #1e40af 100%);
-  --gradient-hero: linear-gradient(135deg, #0c4a6e 0%, #1e3a8a 50%, #312e81 100%);
-  --gradient-accent: linear-gradient(135deg, #10b981 0%, #0ea5e9 100%);
+  --gradient-primary: linear-gradient(135deg, var(--brand-red-600) 0%, var(--brand-blue-700) 100%);
+  --gradient-hero: linear-gradient(135deg, var(--brand-blue-800) 0%, var(--brand-red-700) 60%, var(--brand-blue-700) 100%);
+  --gradient-accent: linear-gradient(135deg, var(--brand-blue-400) 0%, var(--brand-red-500) 100%);
 }
 
 .dark {
@@ -40,7 +60,69 @@
   --card-border: #334155;
   --card-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.3), 0 1px 2px -1px rgb(0 0 0 / 0.3);
   
-  --gradient-hero: linear-gradient(135deg, #0c4a6e 0%, #1e3a8a 50%, #312e81 100%);
+  --gradient-hero: linear-gradient(135deg, #10254d 0%, #6b1220 55%, #0b3566 100%);
+}
+
+/* Balanced utility overrides: keep blues for base accents, add brand red helpers */
+@layer utilities {
+  /* Text blues */
+  .text-sky-100 { color: var(--brand-blue-100) !important; }
+  .text-sky-200 { color: var(--brand-blue-200) !important; }
+  .text-sky-400 { color: var(--brand-blue-400) !important; }
+  .text-sky-500 { color: var(--brand-blue-500) !important; }
+  .text-sky-600 { color: var(--brand-blue-600) !important; }
+  .text-sky-700 { color: var(--brand-blue-700) !important; }
+  .text-sky-800 { color: var(--brand-blue-800) !important; }
+
+  /* Background blues */
+  .bg-sky-50 { background-color: #f1f5fb !important; }
+  .bg-sky-100 { background-color: var(--brand-blue-100) !important; }
+  .bg-sky-200 { background-color: var(--brand-blue-200) !important; }
+  .bg-sky-400 { background-color: var(--brand-blue-400) !important; }
+  .bg-sky-500 { background-color: var(--brand-blue-500) !important; }
+  .bg-sky-600 { background-color: var(--brand-blue-600) !important; }
+  .bg-sky-900 { background-color: #0a1c36 !important; }
+
+  /* Borders blues */
+  .border-sky-100 { border-color: var(--brand-blue-100) !important; }
+  .border-sky-200 { border-color: var(--brand-blue-200) !important; }
+  .border-sky-400 { border-color: var(--brand-blue-400) !important; }
+  .border-sky-500 { border-color: var(--brand-blue-500) !important; }
+  .border-sky-600 { border-color: var(--brand-blue-600) !important; }
+  .border-sky-700 { border-color: var(--brand-blue-700) !important; }
+
+  /* Gradients using red→blue blend */
+  .from-sky-100 { --tw-gradient-from: var(--brand-blue-100) var(--tw-gradient-from-position); --tw-gradient-to: rgb(224 236 251 / 0) var(--tw-gradient-to-position); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+  .from-sky-400 { --tw-gradient-from: var(--brand-blue-400) var(--tw-gradient-from-position); --tw-gradient-to: rgb(106 154 221 / 0) var(--tw-gradient-to-position); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+  .from-sky-500 { --tw-gradient-from: var(--brand-blue-500) var(--tw-gradient-from-position); --tw-gradient-to: rgb(63 116 193 / 0) var(--tw-gradient-to-position); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+  .from-sky-600 { --tw-gradient-from: var(--brand-blue-600) var(--tw-gradient-from-position); --tw-gradient-to: rgb(31 90 168 / 0) var(--tw-gradient-to-position); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+  .to-sky-100 { --tw-gradient-to: var(--brand-blue-100) var(--tw-gradient-to-position); }
+  .to-sky-400 { --tw-gradient-to: var(--brand-blue-400) var(--tw-gradient-to-position); }
+  .to-sky-500 { --tw-gradient-to: var(--brand-blue-500) var(--tw-gradient-to-position); }
+  .to-sky-600 { --tw-gradient-to: var(--brand-blue-600) var(--tw-gradient-to-position); }
+  .to-blue-600 { --tw-gradient-to: var(--brand-blue-600) var(--tw-gradient-to-position); }
+  .via-blue-100 { --tw-gradient-stops: var(--tw-gradient-from), var(--brand-blue-100), var(--tw-gradient-to, rgb(224 236 251 / 0)); }
+  .via-indigo-100 { --tw-gradient-stops: var(--tw-gradient-from), var(--brand-blue-200), var(--tw-gradient-to, rgb(195 218 247 / 0)); }
+
+  /* Brand-red helpers for emphasis */
+  .text-brand-red { color: var(--brand-red-600) !important; }
+  .bg-brand-red { background-color: var(--brand-red-600) !important; }
+  .border-brand-red { border-color: var(--brand-red-600) !important; }
+  .shadow-brand-red\/30 { --tw-shadow-color: rgb(212 33 41 / 0.3); --tw-shadow: var(--tw-shadow-colored); }
+
+  /* Motion tokens (Tailwind-style utilities) */
+  .dur-150 { transition-duration: 150ms !important; }
+  .dur-200 { transition-duration: 200ms !important; }
+  .dur-300 { transition-duration: 300ms !important; }
+  .dur-500 { transition-duration: 500ms !important; }
+  .ease-soft { transition-timing-function: cubic-bezier(0.4, 0.0, 0.2, 1) !important; }
+  .ease-smooth { transition-timing-function: cubic-bezier(0.25, 0.8, 0.4, 1) !important; }
+  .ease-pop { transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1) !important; }
+
+  .animate-fade-up { animation: fadeUp 0.6s var(--ease-smooth, cubic-bezier(0.25, 0.8, 0.4, 1)) both; }
+  .animate-slide-up { animation: slideUp 0.6s var(--ease-smooth, cubic-bezier(0.25, 0.8, 0.4, 1)) both; }
+  .animate-scale-in { animation: scaleIn 0.5s var(--ease-pop, cubic-bezier(0.34, 1.56, 0.64, 1)) both; }
+  .animate-fade { animation: fadeIn 0.5s var(--ease-soft, cubic-bezier(0.4, 0.0, 0.2, 1)) both; }
 }
 
 /* Base styles */
@@ -53,7 +135,8 @@ body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
   transition: background-color 0.3s ease, color 0.3s ease;
-  @apply antialiased;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Scrollbar styling */
@@ -132,6 +215,39 @@ body {
   }
   to {
     opacity: 1;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
@@ -251,6 +367,7 @@ body {
 /* Glass morphism effect */
 .glass {
   background: rgba(255, 255, 255, 0.1);
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
@@ -319,6 +436,12 @@ body {
 
 .bg-gradient-accent {
   background: var(--gradient-accent);
+}
+
+.hero-bg-image {
+  background-image: var(--hero-bg-image);
+  background-size: cover;
+  background-position: center;
 }
 
 /* Animated gradient background */

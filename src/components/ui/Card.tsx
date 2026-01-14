@@ -51,7 +51,7 @@ export const Card: React.FC<CardProps> = ({
       hover:shadow-xl dark:hover:shadow-slate-900/40
       hover:border-sky-200 dark:hover:border-sky-800
       hover:-translate-y-1
-      transition-all duration-300 ease-out
+      transition-all dur-300 ease-smooth
     `
     : '';
 

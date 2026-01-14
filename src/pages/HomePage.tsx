@@ -1,24 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import {
-  HeartIcon,
-  BeakerIcon,
-  AcademicCapIcon,
-  ShieldCheckIcon,
-  BuildingOfficeIcon,
-  BuildingLibraryIcon,
-  BriefcaseIcon,
-  ArrowRightIcon,
-} from '@heroicons/react/24/outline';
+import { BeakerIcon, BuildingOfficeIcon, BuildingLibraryIcon, BriefcaseIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 import { Hero } from '../components/ui/Hero';
 import { Section, SectionTitle, AnimatedContainer, AnimatedItem, StatItem } from '../components/ui/Section';
-import { Card, CardContent, CardTitle, CardDescription, CardPlaceholder } from '../components/ui/Card';
+import { Card, CardContent, CardTitle, CardDescription } from '../components/ui/Card';
 import { Button } from '../components/ui/Button';
 import { getCategoryIcon } from '../components/icons/CategoryIcons';
-import { mainCategories, productCategories } from '../data/productCategories';
-import { sectors, whoWeServe } from '../data/sectors';
-import { resources, companyStats, partners } from '../data/resources';
+import { mainCategories } from '../data/productCategories';
+import { sectors } from '../data/sectors';
+import { companyStats } from '../data/resources';
+import { clients } from '../data/clients';
+import heroBg from '../assets/medlab-building.jpg';
+import facilityImg from '../assets/medlab.jpg';
 
 export const HomePage: React.FC = () => {
   return (
@@ -29,6 +23,8 @@ export const HomePage: React.FC = () => {
         description="Supplying hospitals, laboratories, educational institutions, and industry with quality medical equipment, laboratory instruments, and first aid supplies."
         primaryCta={{ label: 'Browse Products', to: '/products' }}
         secondaryCta={{ label: 'Request a Quote', to: '/contact' }}
+        backgroundImage={heroBg}
+        overlay
         size="lg"
       />
 
@@ -43,25 +39,25 @@ export const HomePage: React.FC = () => {
             return (
               <AnimatedItem key={category.id}>
                 <Link to={`/products?category=${category.id}`}>
-                  <Card hover className="h-full text-center group">
+                  <Card hover className="h-full text-center group border border-red-100/70 dark:border-red-900/40">
                     <CardContent className="py-8">
                       <motion.div
                         className="
                           w-20 h-20 mx-auto mb-4 rounded-2xl
-                          bg-gradient-to-br from-sky-100 to-blue-100
-                          dark:from-sky-900/50 dark:to-blue-900/50
+                          bg-gradient-to-br from-rose-50 to-red-100
+                          dark:from-red-900/40 dark:to-rose-900/30
                           flex items-center justify-center
                           group-hover:scale-110 transition-transform duration-300
                         "
                         whileHover={{ rotate: 5 }}
                       >
-                        <div className="text-sky-600 dark:text-sky-400">
+                        <div className="text-red-600 dark:text-red-200">
                           {IconComponent}
                         </div>
                       </motion.div>
                       <CardTitle className="text-xl">{category.name}</CardTitle>
                       <CardDescription>{category.description}</CardDescription>
-                      <div className="mt-4 flex items-center justify-center gap-2 text-sky-600 dark:text-sky-400 font-medium text-sm opacity-0 group-hover:opacity-100 transition-opacity">
+                      <div className="mt-4 flex items-center justify-center gap-2 text-red-600 dark:text-red-200 font-medium text-sm opacity-0 group-hover:opacity-100 transition-opacity">
                         <span>Explore</span>
                         <ArrowRightIcon className="w-4 h-4" />
                       </div>
@@ -72,74 +68,6 @@ export const HomePage: React.FC = () => {
             );
           })}
         </AnimatedContainer>
-      </Section>
-
-      {/* Who We Serve */}
-      <Section>
-        <SectionTitle center subtitle="Trusted by leading institutions across Namibia">
-          Who We Serve
-        </SectionTitle>
-        <AnimatedContainer className="flex flex-wrap justify-center gap-6 md:gap-12">
-          {whoWeServe.map((item) => {
-            const icons: Record<string, React.ComponentType<{ className?: string }>> = {
-              hospital: BuildingOfficeIcon,
-              laboratory: BeakerIcon,
-              education: BuildingLibraryIcon,
-              industry: BriefcaseIcon,
-            };
-            const Icon = icons[item.iconType] || BuildingOfficeIcon;
-            return (
-              <AnimatedItem key={item.name}>
-                <motion.div
-                  className="flex flex-col items-center"
-                  whileHover={{ scale: 1.1 }}
-                >
-                  <div className="w-16 h-16 rounded-full bg-sky-100 dark:bg-sky-900/50 flex items-center justify-center mb-2">
-                    <Icon className="w-8 h-8 text-sky-600 dark:text-sky-400" />
-                  </div>
-                  <span className="text-gray-700 dark:text-gray-300 font-medium">{item.name}</span>
-                </motion.div>
-              </AnimatedItem>
-            );
-          })}
-        </AnimatedContainer>
-      </Section>
-
-      {/* Featured Product Categories */}
-      <Section background="gray">
-        <SectionTitle center subtitle="Browse our wide range of products">
-          Featured Categories
-        </SectionTitle>
-        <AnimatedContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {productCategories.slice(0, 6).map((category) => (
-            <AnimatedItem key={category.id}>
-              <Link to={`/products/${category.slug}`}>
-                <Card hover className="h-full">
-                  <CardPlaceholder
-                    icon={<BeakerIcon className="w-12 h-12" />}
-                    label={category.name}
-                    className="h-48"
-                  />
-                  <CardContent>
-                    <CardTitle>{category.name}</CardTitle>
-                    <CardDescription>{category.description}</CardDescription>
-                    <div className="mt-4">
-                      <span className="text-sky-600 dark:text-sky-400 font-medium text-sm hover:text-sky-700 dark:hover:text-sky-300 flex items-center gap-1 group">
-                        View Category
-                        <ArrowRightIcon className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                      </span>
-                    </div>
-                  </CardContent>
-                </Card>
-              </Link>
-            </AnimatedItem>
-          ))}
-        </AnimatedContainer>
-        <div className="text-center mt-8">
-          <Button as="link" to="/products" variant="outline">
-            View All Products
-          </Button>
-        </div>
       </Section>
 
       {/* Stats Section */}
@@ -173,27 +101,33 @@ export const HomePage: React.FC = () => {
             const Icon = icons[sector.id] || BuildingOfficeIcon;
             return (
               <AnimatedItem key={sector.id}>
-                <Link to={`/solutions#${sector.slug}`}>
-                  <Card hover className="h-full">
+                <Link to={`/products`}>
+                  <Card hover className="h-full border border-red-100/70 dark:border-red-900/40 hover:shadow-[0_18px_30px_-20px_rgba(220,38,38,0.45)] transition-shadow">
                     <CardContent className="flex items-start gap-4">
-                      <div className="text-sky-600 dark:text-sky-400 flex-shrink-0">
-                        <Icon className="w-10 h-10" />
+                      <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-red-500 to-rose-500 dark:from-red-500 dark:to-rose-400 flex items-center justify-center text-white shadow-lg shadow-red-200/70 dark:shadow-red-900/40">
+                        <Icon className="w-6 h-6" />
                       </div>
-                      <div>
-                        <CardTitle>{sector.name}</CardTitle>
-                        <CardDescription>{sector.shortDescription}</CardDescription>
-                        <ul className="mt-3 space-y-1">
+                      <div className="space-y-3">
+                        <CardTitle className="text-lg text-gray-900 dark:text-white">{sector.name}</CardTitle>
+                        <CardDescription className="text-gray-700 dark:text-gray-200">{sector.shortDescription}</CardDescription>
+                        <ul className="space-y-1.5">
                           {sector.offerings.slice(0, 3).map((offering, index) => (
-                            <li key={index} className="text-sm text-gray-500 dark:text-gray-400 flex items-center gap-2">
-                              <span className="w-1.5 h-1.5 bg-sky-500 rounded-full"></span>
+                            <li key={index} className="text-sm text-gray-700 dark:text-gray-200 flex items-center gap-2">
+                              <span className="w-1.5 h-1.5 rounded-full bg-red-500" />
                               {offering}
                             </li>
                           ))}
                         </ul>
-                        <span className="inline-block mt-3 text-sky-600 dark:text-sky-400 font-medium text-sm flex items-center gap-1 group">
+                        <Button
+                          as="span"
+                          variant="ghost"
+                          size="sm"
+                          className="text-red-600 dark:text-red-200 hover:bg-red-50 dark:hover:bg-red-900/30 group"
+                          icon={<ArrowRightIcon className="w-4 h-4 transition-transform group-hover:translate-x-1" />}
+                          iconPosition="right"
+                        >
                           Learn more
-                          <ArrowRightIcon className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                        </span>
+                        </Button>
                       </div>
                     </CardContent>
                   </Card>
@@ -204,87 +138,102 @@ export const HomePage: React.FC = () => {
         </AnimatedContainer>
       </Section>
 
-      {/* Partners */}
+      {/* Facility Highlight */}
+      <Section background="gray" pattern className="relative">
+        <div className="grid lg:grid-cols-2 gap-8 items-center">
+          <div className="relative overflow-hidden rounded-3xl shadow-xl shadow-red-100/60 dark:shadow-red-900/40 border border-red-100/60 dark:border-red-900/40 group transition-transform duration-300 hover:-translate-y-1 h-[280px] md:h-[340px]">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+            <img src={facilityImg} alt="Medlab facility" className="w-full h-full object-cover" loading="lazy" />
+            <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white">
+              <div>
+                <p className="text-sm uppercase tracking-[0.2em] text-rose-100">On-site training</p>
+                <p className="text-lg font-semibold">Hands-on demos in our lab showroom</p>
+              </div>
+              <span className="px-3 py-1 rounded-full bg-white/15 backdrop-blur-sm text-sm font-semibold border border-white/30 animate-pulse">Visit us</span>
+            </div>
+          </div>
+          <div className="space-y-4">
+            <p className="text-sm uppercase tracking-[0.25em] text-red-600 dark:text-red-200">Experience the difference</p>
+            <h3 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white leading-tight">See our equipment, meet our technicians, and plan your next project.</h3>
+            <p className="text-lg text-gray-700 dark:text-gray-200 max-w-2xl">Walk through real setups, compare options side by side, and get practical guidance from our specialists before you purchase.</p>
+            <div className="flex flex-wrap gap-3">
+              {[ 'Live demos', 'Calibration & QC', 'Project scoping', 'After-sales support' ].map((tag) => (
+                <span key={tag} className="px-3 py-1.5 rounded-full bg-white dark:bg-slate-900 border border-red-100/70 dark:border-red-900/40 text-sm font-semibold text-red-600 dark:text-red-200 shadow-sm shadow-red-100/50">{tag}</span>
+              ))}
+            </div>
+            <Button as="link" to="/contact" size="lg" className="bg-red-600 text-white border-2 border-red-200/70 shadow-[0_15px_40px_-18px_rgba(220,38,38,0.65)] hover:-translate-y-0.5 hover:bg-red-500 transition-all duration-200" icon={<ArrowRightIcon className="w-5 h-5" />} iconPosition="right">
+              Book a visit
+            </Button>
+          </div>
+        </div>
+      </Section>
+
+      {/* Clients */}
       <Section background="gray">
-        <SectionTitle center subtitle="We represent leading global brands">
-          Our Partners
+        <SectionTitle center subtitle="Trusted by leading institutions across Namibia">
+          Our Clients & Partners
         </SectionTitle>
-        <AnimatedContainer className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-6 items-center">
-          {partners.map((partner) => (
-            <AnimatedItem key={partner.name}>
-              <div className="bg-white dark:bg-slate-800 rounded-lg p-4 h-20 flex items-center justify-center shadow-sm hover:shadow-md transition-shadow">
-                <span className="text-gray-500 dark:text-gray-400 text-sm font-medium text-center">{partner.name}</span>
+        <AnimatedContainer className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 items-center">
+          {clients.map((client) => (
+            <AnimatedItem key={client.name}>
+              <div className="bg-white dark:bg-slate-800 rounded-xl p-4 h-20 flex items-center justify-center shadow-sm hover:shadow-md transition-all border border-gray-100 dark:border-slate-700">
+                <img
+                  src={client.logo}
+                  alt={`${client.name} logo`}
+                  className="max-h-12 w-auto object-contain"
+                  loading="lazy"
+                />
               </div>
             </AnimatedItem>
           ))}
         </AnimatedContainer>
       </Section>
 
-      {/* Resources Section */}
-      <Section id="resources">
-        <SectionTitle center subtitle="Download our catalogues and product guides">
-          Resources & Downloads
-        </SectionTitle>
-        <AnimatedContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {resources.slice(0, 3).map((resource) => (
-            <AnimatedItem key={resource.id}>
-              <Card hover>
-                <CardPlaceholder
-                  icon={<BeakerIcon className="w-16 h-16" />}
-                  className="h-40"
-                />
-                <CardContent>
-                  <span className="text-xs font-medium text-sky-600 dark:text-sky-400 uppercase tracking-wide">
-                    {resource.type}
-                  </span>
-                  <CardTitle className="mt-1">{resource.title}</CardTitle>
-                  <CardDescription>{resource.description}</CardDescription>
-                  <Button variant="ghost" size="sm" className="mt-3 -ml-2">
-                    Download PDF →
-                  </Button>
-                </CardContent>
-              </Card>
-            </AnimatedItem>
-          ))}
-        </AnimatedContainer>
-      </Section>
+     
 
       {/* CTA Section */}
-      <Section background="gradient">
-        <div className="text-center max-w-2xl mx-auto">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-bold text-white mb-4"
-          >
-            Need a Quotation or Technical Advice?
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-sky-100 text-lg mb-8"
-          >
-            Our team of experts is ready to help you find the right solutions for your needs.
-            Contact us today for a free consultation.
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-          >
-            <Button as="link" to="/contact" size="lg" className="bg-white text-sky-600 hover:bg-gray-100">
-              Request a Quote
-            </Button>
-            <Button as="link" to="/contact" variant="outline" size="lg" className="border-white text-white hover:bg-white/10">
-              Contact Us
-            </Button>
-          </motion.div>
-        </div>
+      <Section background="gradient" padding="lg">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="max-w-5xl mx-auto"
+        >
+          <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-8 md:p-10 shadow-[0_24px_60px_-25px_rgba(0,0,0,0.45)]">
+            <div className="grid gap-8 lg:grid-cols-3 lg:items-center">
+              <div className="lg:col-span-2 space-y-4">
+                <p className="text-sm uppercase tracking-[0.2em] text-rose-50/80">Get in touch!</p>
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
+                  Need a quotation or technical advice?
+                </h2>
+                <p className="text-rose-50/90 text-lg md:text-xl max-w-2xl">
+                  Our specialists will help you choose the right equipment and support services for your team.
+                </p>
+              </div>
+              <div className="flex flex-col gap-3 lg:items-end">
+                <Button 
+                  as="link" 
+                  to="/contact" 
+                  size="lg" 
+                  className="w-full lg:w-auto bg-red-600 text-white border-2 border-red-200/70 shadow-[0_15px_40px_-18px_rgba(220,38,38,0.65)] hover:-translate-y-0.5 hover:bg-red-500 font-semibold transition-all duration-200"
+                >
+                  Request a quote
+                </Button>
+                <Button 
+                  as="link" 
+                  to="/contact" 
+                  variant="outline" 
+                  size="lg" 
+                  className="w-full lg:w-auto bg-red-600 text-white border-2 border-red-200/70 hover:bg-red-500 hover:-translate-y-0.5 font-semibold shadow-[0_15px_40px_-18px_rgba(220,38,38,0.65)] transition-all duration-200"
+                  icon={<ArrowRightIcon className="w-5 h-5" />}
+                  iconPosition="right"
+                >
+                  Contact us
+                </Button>
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </Section>
     </>
   );

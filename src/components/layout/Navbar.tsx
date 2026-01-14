@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '../ui/Button';
 import { ThemeToggle } from '../ui/ThemeToggle';
 import { useQuote } from '../../contexts';
+import logo from '../../assets/logo/medlab-logo.svg';
 import { 
   Bars3Icon,
   XMarkIcon,
@@ -14,6 +15,7 @@ import {
 
 const navigation = [
   { name: 'Home', to: '/' },
+  { name: 'About', to: '/about' },
   { 
     name: 'Products', 
     to: '/products',
@@ -24,9 +26,6 @@ const navigation = [
       { name: 'First Aid & Safety', to: '/products?category=first-aid' },
     ],
   },
-  { name: 'Solutions', to: '/solutions' },
-  { name: 'Service & Support', to: '/service-support' },
-  { name: 'About', to: '/about' },
   { name: 'Contact', to: '/contact' },
 ];
 
@@ -63,46 +62,13 @@ export const Navbar: React.FC = () => {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 group">
-            <motion.div 
-              className="
-                w-10 h-10 md:w-12 md:h-12 
-                bg-gradient-to-br from-sky-500 to-blue-600 
-                rounded-xl flex items-center justify-center
-                shadow-lg shadow-sky-500/30
-                group-hover:shadow-xl group-hover:shadow-sky-500/40
-                transition-shadow duration-300
-              "
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <span className="text-white font-bold text-xl md:text-2xl">M</span>
-            </motion.div>
-            <div className="hidden sm:block">
-              <span
-                className={`
-                text-xl font-bold transition-colors
-                ${
-                  isScrolled
-                  ? 'text-gray-900 dark:text-white' 
-                    : 'text-white drop-shadow-lg'
-                }
-              `}
-              >
-                Medlab
-              </span>
-              <span
-                className={`
-                text-sm ml-1 transition-colors
-                ${
-                  isScrolled
-                  ? 'text-gray-500 dark:text-slate-400' 
-                    : 'text-sky-200 drop-shadow'
-                }
-              `}
-              >
-                Services
-              </span>
-            </div>
+            <motion.img
+              src={logo}
+              alt="Medlab Services logo"
+              className="h-10 w-auto md:h-12 drop-shadow-md"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+            />
           </Link>
 
           {/* Desktop Navigation */}

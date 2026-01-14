@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Hero } from '../components/ui/Hero';
 import { Section, SectionTitle, AnimatedContainer, AnimatedItem } from '../components/ui/Section';
@@ -124,18 +123,23 @@ export const ContactPage: React.FC = () => {
               >
                 <div className="
                   w-14 h-14 rounded-xl flex-shrink-0
-                  bg-sky-100 dark:bg-sky-900/50
+                  bg-red-50 dark:bg-red-900/30
+                  border border-red-100 dark:border-red-800/60
                   flex items-center justify-center
-                  group-hover:bg-sky-200 dark:group-hover:bg-sky-800/50
+                  shadow-sm
+                  group-hover:bg-red-100 dark:group-hover:bg-red-900/40
                   transition-colors
                 ">
-                  <MapPinIcon className="w-6 h-6 text-sky-600 dark:text-sky-400" />
+                  <MapPinIcon className="w-6 h-6 text-red-600 dark:text-red-300" />
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-900 dark:text-white">Visit Us</h3>
                   <p className="text-gray-600 dark:text-slate-300 mt-1">
-                    123 Medical Street<br />
-                    Windhoek, Namibia
+                    43 Marconi Street<br />
+                    Southern Industrial, Windhoek, Namibia
+                  </p>
+                  <p className="text-gray-500 dark:text-slate-400 text-sm mt-1">
+                    Postal: P.O. Box 40253, Windhoek
                   </p>
                 </div>
               </motion.a>
@@ -148,18 +152,21 @@ export const ContactPage: React.FC = () => {
               >
                 <div className="
                   w-14 h-14 rounded-xl flex-shrink-0
-                  bg-sky-100 dark:bg-sky-900/50
+                  bg-red-50 dark:bg-red-900/30
+                  border border-red-100 dark:border-red-800/60
                   flex items-center justify-center
-                  group-hover:bg-sky-200 dark:group-hover:bg-sky-800/50
+                  shadow-sm
+                  group-hover:bg-red-100 dark:group-hover:bg-red-900/40
                   transition-colors
                 ">
-                  <PhoneIcon className="w-6 h-6 text-sky-600 dark:text-sky-400" />
+                  <PhoneIcon className="w-6 h-6 text-red-600 dark:text-red-300" />
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-900 dark:text-white">Call Us</h3>
                   <p className="text-gray-600 dark:text-slate-300 mt-1">
-                    +264 61 123 4567
+                    +264 61 237076
                   </p>
+                  <p className="text-gray-600 dark:text-slate-300">Fax: +264 61 223949</p>
                   <p className="text-gray-500 dark:text-slate-400 text-sm">Mon-Fri: 8am - 5pm</p>
                 </div>
               </motion.a>
@@ -172,42 +179,40 @@ export const ContactPage: React.FC = () => {
               >
                 <div className="
                   w-14 h-14 rounded-xl flex-shrink-0
-                  bg-sky-100 dark:bg-sky-900/50
+                  bg-red-50 dark:bg-red-900/30
+                  border border-red-100 dark:border-red-800/60
                   flex items-center justify-center
-                  group-hover:bg-sky-200 dark:group-hover:bg-sky-800/50
+                  shadow-sm
+                  group-hover:bg-red-100 dark:group-hover:bg-red-900/40
                   transition-colors
                 ">
-                  <EnvelopeIcon className="w-6 h-6 text-sky-600 dark:text-sky-400" />
+                  <EnvelopeIcon className="w-6 h-6 text-red-600 dark:text-red-300" />
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-900 dark:text-white">Email Us</h3>
                   <p className="text-gray-600 dark:text-slate-300 mt-1">
-                    info@medlabservices.com.na
-                  </p>
-                  <p className="text-gray-600 dark:text-slate-300">
-                    quotes@medlabservices.com.na
+                    medlab@iafrica.com.na
                   </p>
                 </div>
               </motion.a>
             </div>
 
-            {/* Map Placeholder */}
+            {/* Map */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
               className="mt-10"
             >
-              <div className="
-                aspect-video rounded-2xl overflow-hidden
-                bg-gradient-to-br from-sky-100 to-blue-100
-                dark:from-slate-800 dark:to-slate-700
-                flex items-center justify-center
-              ">
-                <div className="text-center text-gray-500 dark:text-slate-400">
-                  <MapPinIcon className="w-12 h-12 mx-auto mb-2 text-sky-300 dark:text-sky-600" />
-                  <span className="text-sm">Map Placeholder</span>
-                </div>
+              <div className="aspect-video rounded-2xl overflow-hidden shadow-md border border-red-100/70 dark:border-red-900/40 bg-white dark:bg-slate-900">
+                <iframe
+                  title="Medlab Services location"
+                  src="https://www.google.com/maps?q=43+Marconi+Street+Windhoek+Namibia&output=embed"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                  className="w-full h-full border-0"
+                />
               </div>
             </motion.div>
           </motion.div>
@@ -366,11 +371,11 @@ export const ContactPage: React.FC = () => {
               <CardContent className="text-center py-10">
                 <div className="
                   w-16 h-16 mx-auto mb-5 rounded-2xl
-                  bg-gradient-to-br from-sky-100 to-blue-100
-                  dark:from-sky-900/50 dark:to-blue-900/50
-                  flex items-center justify-center
+                  bg-gradient-to-br from-red-50 to-rose-100
+                  dark:from-red-900/40 dark:to-rose-900/30
+                  flex items-center justify-center border border-red-100/70 dark:border-red-800/50
                 ">
-                  <CubeIcon className="w-8 h-8 text-sky-600 dark:text-sky-400" />
+                  <CubeIcon className="w-8 h-8 text-red-600 dark:text-red-300" />
                 </div>
                 <CardTitle>Browse Products</CardTitle>
                 <p className="text-gray-600 dark:text-slate-300 mt-2 mb-6">
@@ -388,17 +393,17 @@ export const ContactPage: React.FC = () => {
               <CardContent className="text-center py-10">
                 <div className="
                   w-16 h-16 mx-auto mb-5 rounded-2xl
-                  bg-gradient-to-br from-sky-100 to-blue-100
-                  dark:from-sky-900/50 dark:to-blue-900/50
-                  flex items-center justify-center
+                  bg-gradient-to-br from-red-50 to-rose-100
+                  dark:from-red-900/40 dark:to-rose-900/30
+                  flex items-center justify-center border border-red-100/70 dark:border-red-800/50
                 ">
-                  <WrenchScrewdriverIcon className="w-8 h-8 text-sky-600 dark:text-sky-400" />
+                  <WrenchScrewdriverIcon className="w-8 h-8 text-red-600 dark:text-red-300" />
                 </div>
                 <CardTitle>Technical Support</CardTitle>
                 <p className="text-gray-600 dark:text-slate-300 mt-2 mb-6">
                   Need help with equipment? Submit a service request.
                 </p>
-                <Button as="link" to="/service-support#request" variant="outline" size="sm">
+                <Button as="link" to="/contact" variant="outline" size="sm">
                   Get Support
                 </Button>
               </CardContent>
@@ -410,11 +415,11 @@ export const ContactPage: React.FC = () => {
               <CardContent className="text-center py-10">
                 <div className="
                   w-16 h-16 mx-auto mb-5 rounded-2xl
-                  bg-gradient-to-br from-sky-100 to-blue-100
-                  dark:from-sky-900/50 dark:to-blue-900/50
-                  flex items-center justify-center
+                  bg-gradient-to-br from-red-50 to-rose-100
+                  dark:from-red-900/40 dark:to-rose-900/30
+                  flex items-center justify-center border border-red-100/70 dark:border-red-800/50
                 ">
-                  <DocumentIcon className="w-8 h-8 text-sky-600 dark:text-sky-400" />
+                  <DocumentIcon className="w-8 h-8 text-red-600 dark:text-red-300" />
                 </div>
                 <CardTitle>Downloads</CardTitle>
                 <p className="text-gray-600 dark:text-slate-300 mt-2 mb-6">
