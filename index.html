@@ -21,15 +21,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-    <title>Medlab Services Namibia | Medical & Laboratory Solutions</title>
+    <title>MedLab Services Namibia | Medical & Laboratory Solutions</title>
     
-    <!-- Dark mode script - runs before page load to prevent flash -->
+    <!-- Theme init script - runs before page load to prevent flash -->
     <script>
       (function() {
-        const theme = localStorage.getItem('medlab-theme');
-        if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-          document.documentElement.classList.add('dark');
-        }
+        const stored = localStorage.getItem('theme');
+        const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        const theme = stored || preferred;
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.classList.toggle('dark', theme === 'dark');
       })();
     </script>
   </head>

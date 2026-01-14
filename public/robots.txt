@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://medlabservices.com.na/sitemap.xml

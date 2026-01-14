@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Hero } from '../components/ui/Hero';
 import { Section, SectionTitle, AnimatedContainer, AnimatedItem } from '../components/ui/Section';
@@ -13,6 +14,7 @@ import {
   WrenchScrewdriverIcon,
   DocumentIcon
 } from '../components/ui/Icons';
+import { setPageMeta } from '../utils/seo';
 
 interface FormState {
   name: string;
@@ -37,6 +39,23 @@ export const ContactPage: React.FC = () => {
   const [formData, setFormData] = useState<FormState>(initialFormState);
   const [errors, setErrors] = useState<Partial<FormState>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [searchParams] = useSearchParams();
+
+  useEffect(() => {
+    setPageMeta({
+      title: 'Contact MedLab Services | Get a Quote',
+      description:
+        'Contact MedLab Services for product enquiries, quotes, and support. Our team responds within 24-48 hours.',
+    });
+  }, []);
+
+  useEffect(() => {
+    const productsParam = searchParams.get('products');
+    if (productsParam) {
+      setActiveTab('quote');
+      setFormData((prev) => (prev.products ? prev : { ...prev, products: productsParam }));
+    }
+  }, [searchParams]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -235,7 +254,7 @@ export const ContactPage: React.FC = () => {
                       flex-1 py-4 px-6 text-center font-semibold
                       transition-all duration-200
                       ${activeTab === 'enquiry'
-                        ? 'text-sky-600 dark:text-sky-400 border-b-2 border-sky-500 bg-sky-50/50 dark:bg-sky-950/30'
+                        ? 'text-red-600 dark:text-red-300 border-b-2 border-red-500 bg-red-50/50 dark:bg-red-950/30'
                         : 'text-gray-600 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-slate-800'
                       }
                     `}
@@ -248,7 +267,7 @@ export const ContactPage: React.FC = () => {
                       flex-1 py-4 px-6 text-center font-semibold
                       transition-all duration-200
                       ${activeTab === 'quote'
-                        ? 'text-sky-600 dark:text-sky-400 border-b-2 border-sky-500 bg-sky-50/50 dark:bg-sky-950/30'
+                        ? 'text-red-600 dark:text-red-300 border-b-2 border-red-500 bg-red-50/50 dark:bg-red-950/30'
                         : 'text-gray-600 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-slate-800'
                       }
                     `}

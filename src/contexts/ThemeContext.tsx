@@ -2,7 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 
 type Theme = 'light' | 'dark';
 
-const STORAGE_KEY = 'medlab-theme';
+const STORAGE_KEY = 'theme';
 
 interface ThemeContextType {
   theme: Theme;
@@ -27,12 +27,8 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
   useEffect(() => {
     const root = document.documentElement;
-    if (theme === 'dark') {
-      root.classList.add('dark');
-    } else {
-      root.classList.remove('dark');
-    }
     root.dataset.theme = theme;
+    root.classList.toggle('dark', theme === 'dark');
     localStorage.setItem(STORAGE_KEY, theme);
   }, [theme]);
 
@@ -71,4 +67,3 @@ export const useTheme = () => {
   }
   return context;
 };
-

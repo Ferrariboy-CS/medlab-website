@@ -20,11 +20,11 @@ export const Section: React.FC<SectionProps> = ({
   pattern = false,
 }) => {
   const backgrounds = {
-    white: 'bg-white dark:bg-slate-900',
-    gray: 'bg-gray-50 dark:bg-slate-800/50',
-    blue: 'bg-sky-50 dark:bg-sky-950/30',
-    gradient: 'bg-gradient-to-br from-sky-600 via-blue-700 to-indigo-800 dark:from-sky-900 dark:via-blue-950 dark:to-indigo-950',
-    dark: 'bg-slate-900 dark:bg-slate-950',
+    white: 'bg-white dark:bg-slate-950',
+    gray: 'bg-rose-50/60 dark:bg-slate-900/70',
+    blue: 'bg-rose-50 dark:bg-slate-900',
+    gradient: 'bg-gradient-to-br from-red-600 via-rose-700 to-red-900 dark:from-red-900 dark:via-rose-950 dark:to-slate-950',
+    dark: 'bg-slate-950',
   };
 
   const paddings = {
@@ -37,7 +37,7 @@ export const Section: React.FC<SectionProps> = ({
     <section
       id={id}
       className={`
-        relative overflow-hidden
+        relative overflow-hidden reveal
         ${backgrounds[background]}
         ${paddings[padding]}
         ${className}
@@ -91,7 +91,7 @@ export const SectionTitle: React.FC<SectionTitleProps> = ({
       {subtitle && (
         <p className={`
           mt-4 text-lg md:text-xl
-          ${light ? 'text-sky-100' : 'text-gray-600 dark:text-slate-300'}
+          ${light ? 'text-rose-100' : 'text-gray-600 dark:text-slate-300'}
         `}>
           {subtitle}
         </p>
@@ -183,21 +183,21 @@ export const StatItem: React.FC<StatItemProps> = ({
         text-4xl md:text-5xl lg:text-6xl font-bold mb-2
         ${light 
           ? 'text-white' 
-          : 'bg-gradient-to-r from-sky-600 to-blue-600 bg-clip-text text-transparent'
+          : 'bg-gradient-to-r from-red-600 to-rose-600 bg-clip-text text-transparent'
         }
       `}>
         {value}
       </div>
       <div className={`
         text-lg font-semibold
-        ${light ? 'text-sky-200' : 'text-gray-900 dark:text-white'}
+        ${light ? 'text-rose-200' : 'text-gray-900 dark:text-white'}
       `}>
         {label}
       </div>
       {description && (
         <div className={`
           text-sm mt-1
-          ${light ? 'text-sky-300' : 'text-gray-500 dark:text-slate-400'}
+          ${light ? 'text-rose-300' : 'text-gray-500 dark:text-slate-400'}
         `}>
           {description}
         </div>

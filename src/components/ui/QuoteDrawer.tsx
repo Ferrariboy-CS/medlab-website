@@ -1,22 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { XMarkIcon, TrashIcon } from '@heroicons/react/24/outline';
-import { CheckCircleIcon } from '@heroicons/react/24/solid';
 import { useQuote } from '../../contexts';
 import { Button } from './Button';
 
 export const QuoteDrawer: React.FC = () => {
   const { items, removeItem, updateQuantity, clearQuote, isOpen, setIsOpen, itemCount } =
     useQuote();
-  const [submitted, setSubmitted] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = () => {
-    setSubmitted(true);
-    setTimeout(() => {
-      clearQuote();
-      setIsOpen(false);
-      setSubmitted(false);
-    }, 2000);
+    const summary = items
+      .map((item) => `${item.product.name} (x${item.quantity})`)
+      .join(', ');
+    navigate(`/contact?products=${encodeURIComponent(summary)}#quote`);
+    setIsOpen(false);
   };
 
   return (
@@ -41,9 +40,9 @@ export const QuoteDrawer: React.FC = () => {
             className="fixed right-0 top-0 h-full w-full max-w-md bg-white dark:bg-slate-800 shadow-2xl z-50 flex flex-col"
           >
             {/* Header */}
-            <div className="p-4 border-b border-gray-200 dark:border-slate-700 flex items-center justify-between bg-gradient-to-r from-sky-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
-              <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
-                Quote Request ({itemCount})
+            <div className="p-4 border-b border-gray-200 dark:border-slate-700 flex items-center justify-between bg-gradient-to-r from-red-50 to-rose-50 dark:from-slate-900 dark:to-slate-800">
+                      <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
+                        Request List ({itemCount})
               </h2>
               <button
                 onClick={() => setIsOpen(false)}
@@ -56,23 +55,7 @@ export const QuoteDrawer: React.FC = () => {
 
             {/* Content */}
             <div className="flex-1 overflow-y-auto p-4 custom-scrollbar">
-              {submitted ? (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="text-center py-12"
-                >
-                  <div className="w-16 h-16 bg-emerald-100 dark:bg-emerald-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <CheckCircleIcon className="w-8 h-8 text-emerald-600 dark:text-emerald-400" />
-                  </div>
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                    Quote Request Submitted!
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-400 mt-2">
-                    We'll get back to you shortly.
-                  </p>
-                </motion.div>
-              ) : items.length === 0 ? (
+              {items.length === 0 ? (
                 <div className="text-center py-12">
                   <div className="w-16 h-16 bg-gray-100 dark:bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-4">
                     <svg
@@ -93,7 +76,7 @@ export const QuoteDrawer: React.FC = () => {
                     No items yet
                   </h3>
                   <p className="text-gray-600 dark:text-gray-400 mt-2">
-                    Add products to request a quote.
+                    Add products to your request list.
                   </p>
                 </div>
               ) : (
@@ -150,13 +133,13 @@ export const QuoteDrawer: React.FC = () => {
             </div>
 
             {/* Footer */}
-            {items.length > 0 && !submitted && (
+            {items.length > 0 && (
               <div className="p-4 border-t border-gray-200 dark:border-slate-700 space-y-3 bg-gray-50 dark:bg-slate-900/50">
-                <Button onClick={handleSubmit} className="w-full" size="lg">
-                  Submit Quote Request
-                </Button>
-                <Button onClick={clearQuote} variant="ghost" className="w-full">
-                  Clear All
+                  <Button onClick={handleSubmit} className="w-full" size="lg">
+                    Send Request
+                  </Button>
+                  <Button onClick={clearQuote} variant="ghost" className="w-full">
+                    Clear All
                 </Button>
               </div>
             )}
@@ -166,4 +149,3 @@ export const QuoteDrawer: React.FC = () => {
     </AnimatePresence>
   );
 };
-

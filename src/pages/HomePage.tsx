@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { BeakerIcon, BuildingOfficeIcon, BuildingLibraryIcon, BriefcaseIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
@@ -13,16 +13,25 @@ import { companyStats } from '../data/resources';
 import { clients } from '../data/clients';
 import heroBg from '../assets/medlab-building.jpg';
 import facilityImg from '../assets/medlab.jpg';
+import { setPageMeta } from '../utils/seo';
 
 export const HomePage: React.FC = () => {
+  useEffect(() => {
+    setPageMeta({
+      title: 'MedLab Services Namibia | Medical & Laboratory Solutions',
+      description:
+        'MedLab Services delivers trusted medical, laboratory, educational, and first aid equipment across Namibia with expert support.',
+    });
+  }, []);
+
   return (
     <>
       {/* Hero Section */}
       <Hero
         title="Trusted Medical & Laboratory Solutions for Namibia Since 1986"
         description="Supplying hospitals, laboratories, educational institutions, and industry with quality medical equipment, laboratory instruments, and first aid supplies."
-        primaryCta={{ label: 'Browse Products', to: '/products' }}
-        secondaryCta={{ label: 'Request a Quote', to: '/contact' }}
+        primaryCta={{ label: 'View Products', to: '/products' }}
+        secondaryCta={{ label: 'Contact', to: '/contact' }}
         backgroundImage={heroBg}
         overlay
         size="lg"
@@ -143,7 +152,14 @@ export const HomePage: React.FC = () => {
         <div className="grid lg:grid-cols-2 gap-8 items-center">
           <div className="relative overflow-hidden rounded-3xl shadow-xl shadow-red-100/60 dark:shadow-red-900/40 border border-red-100/60 dark:border-red-900/40 group transition-transform duration-300 hover:-translate-y-1 h-[280px] md:h-[340px]">
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-            <img src={facilityImg} alt="Medlab facility" className="w-full h-full object-cover" loading="lazy" />
+            <img
+              src={facilityImg}
+              alt="MedLab facility"
+              width={1200}
+              height={800}
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
             <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white">
               <div>
                 <p className="text-sm uppercase tracking-[0.2em] text-rose-100">On-site training</p>
@@ -180,6 +196,8 @@ export const HomePage: React.FC = () => {
                 <img
                   src={client.logo}
                   alt={`${client.name} logo`}
+                  width={140}
+                  height={60}
                   className="max-h-12 w-auto object-contain"
                   loading="lazy"
                 />

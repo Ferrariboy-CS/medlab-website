@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import logo from '../../assets/logo/medlab-logo.svg';
 
 const footerLinks = {
   products: [
@@ -69,18 +68,20 @@ const socialLinks = [
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-slate-100 text-slate-700 dark:bg-slate-900 dark:text-slate-200 border-t border-slate-200 dark:border-slate-800">
+    <footer className="bg-white text-slate-700 dark:bg-slate-950 dark:text-slate-200 border-t border-slate-200 dark:border-slate-800">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 items-start">
           {/* Logo */}
           <div className="flex flex-col gap-4">
             <Link to="/" className="inline-flex items-center" aria-label="Medlab Home">
-              <motion.img
-                src={logo}
-                alt="Medlab Services logo"
-                className="h-12 w-auto"
-                whileHover={{ scale: 1.02 }}
-              />
+            <motion.img
+              src="/assets/medlab-logo.svg"
+              alt="MedLab Services logo"
+              width={150}
+              height={48}
+              className="h-12 w-auto"
+              whileHover={{ scale: 1.02 }}
+            />
             </Link>
             <p className="text-sm text-slate-500 dark:text-slate-400 max-w-xs">
               Trusted medical and laboratory solutions for Namibia since 1986.

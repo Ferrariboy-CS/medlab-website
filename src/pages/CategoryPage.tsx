@@ -113,7 +113,7 @@ export const CategoryPage: React.FC = () => {
                   rounded-xl
                   text-gray-900 dark:text-white
                   placeholder:text-gray-400 dark:placeholder:text-slate-500
-                  focus:border-sky-500 dark:focus:border-sky-400
+                  focus:border-red-500 dark:focus:border-red-400
                   focus:outline-none
                   transition-colors
                 "
@@ -130,7 +130,7 @@ export const CategoryPage: React.FC = () => {
                   px-4 py-2.5 rounded-xl text-sm font-semibold
                   transition-all duration-200
                   ${selectedSubcategory === 'all'
-                    ? 'bg-gradient-to-r from-sky-500 to-blue-600 text-white shadow-lg shadow-sky-500/25'
+                    ? 'bg-gradient-to-r from-red-500 to-rose-600 text-white shadow-lg shadow-red-500/25'
                     : 'bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-slate-300 hover:bg-gray-200 dark:hover:bg-slate-700'
                   }
                 `}
@@ -145,7 +145,7 @@ export const CategoryPage: React.FC = () => {
                     px-4 py-2.5 rounded-xl text-sm font-semibold
                     transition-all duration-200
                     ${selectedSubcategory === sub
-                      ? 'bg-gradient-to-r from-sky-500 to-blue-600 text-white shadow-lg shadow-sky-500/25'
+                      ? 'bg-gradient-to-r from-red-500 to-rose-600 text-white shadow-lg shadow-red-500/25'
                       : 'bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-slate-300 hover:bg-gray-200 dark:hover:bg-slate-700'
                     }
                   `}
@@ -199,7 +199,7 @@ export const CategoryPage: React.FC = () => {
                   <ul className="mt-3 space-y-1">
                           {product.features.slice(0, 2).map((feature, idx) => (
                             <li key={idx} className="text-xs text-gray-500 dark:text-slate-400 flex items-center gap-1.5">
-                              <span className="w-1 h-1 bg-sky-500 rounded-full flex-shrink-0" />
+                              <span className="w-1 h-1 bg-red-500 rounded-full flex-shrink-0" />
                         {feature}
                       </li>
                     ))}
@@ -214,7 +214,7 @@ export const CategoryPage: React.FC = () => {
                           fullWidth
                           icon={inQuote ? <CheckCircleIcon className="w-4 h-4" /> : <PlusIcon className="w-4 h-4" />}
                   >
-                          {inQuote ? 'Added to Quote' : 'Add to Quote'}
+                          {inQuote ? 'Added to Request' : 'Add to Request'}
                   </Button>
                 </div>
               </CardContent>
@@ -270,8 +270,8 @@ export const CategoryPage: React.FC = () => {
                     bg-white dark:bg-slate-800
                     text-gray-700 dark:text-slate-300
                     border border-gray-200 dark:border-slate-700
-                    hover:border-sky-300 dark:hover:border-sky-700
-                    hover:text-sky-600 dark:hover:text-sky-400
+                    hover:border-red-300 dark:hover:border-red-700
+                    hover:text-red-600 dark:hover:text-red-300
                     transition-colors
                     text-sm font-medium
                   "

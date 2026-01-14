@@ -13,7 +13,16 @@
   --brand-red-700: #b51d24;
   --brand-red-800: #8f161d;
 
-  /* Companion blues for harmony */
+  /* Theme tokens */
+  --bg: #ffffff;
+  --surface: #f8fafc;
+  --text: #0f172a;
+  --muted: #5b6777;
+  --border: #e2e8f0;
+  --red: var(--brand-red-600);
+  --redHover: var(--brand-red-700);
+
+  /* Legacy palette for existing utilities */
   --brand-blue-100: #e0ecfb;
   --brand-blue-200: #c3daf7;
   --brand-blue-300: #99bef0;
@@ -27,8 +36,8 @@
   --color-primary: var(--brand-red-600);
   --color-primary-dark: var(--brand-red-800);
   --color-primary-light: var(--brand-red-400);
-  --color-secondary: var(--brand-blue-600);
-  --color-accent: var(--brand-blue-400);
+  --color-secondary: var(--brand-red-500);
+  --color-accent: var(--brand-red-400);
   
   /* Light Theme */
   --bg-primary: #ffffff;
@@ -43,24 +52,33 @@
   --card-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   
   /* Gradient backgrounds */
-  --gradient-primary: linear-gradient(135deg, var(--brand-red-600) 0%, var(--brand-blue-700) 100%);
-  --gradient-hero: linear-gradient(135deg, var(--brand-blue-800) 0%, var(--brand-red-700) 60%, var(--brand-blue-700) 100%);
-  --gradient-accent: linear-gradient(135deg, var(--brand-blue-400) 0%, var(--brand-red-500) 100%);
+  --gradient-primary: linear-gradient(135deg, var(--brand-red-600) 0%, var(--brand-red-800) 100%);
+  --gradient-hero: linear-gradient(135deg, #4b0b10 0%, #7a0f16 50%, #3d0a10 100%);
+  --gradient-accent: linear-gradient(135deg, var(--brand-red-400) 0%, var(--brand-red-600) 100%);
 }
 
-.dark {
-  --bg-primary: #0f172a;
-  --bg-secondary: #1e293b;
-  --bg-tertiary: #334155;
+html[data-theme='dark'],
+html.dark {
+  --bg: #0f1216;
+  --surface: #171b22;
+  --text: #f8fafc;
+  --muted: #cbd5e1;
+  --border: #2b3340;
+  --red: #f0444f;
+  --redHover: #ff5b66;
+
+  --bg-primary: #0f1216;
+  --bg-secondary: #171b22;
+  --bg-tertiary: #232a35;
   --text-primary: #f8fafc;
   --text-secondary: #cbd5e1;
-  --text-tertiary: #64748b;
-  --border-color: #334155;
-  --card-bg: #1e293b;
-  --card-border: #334155;
-  --card-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.3), 0 1px 2px -1px rgb(0 0 0 / 0.3);
+  --text-tertiary: #94a3b8;
+  --border-color: #2b3340;
+  --card-bg: #171b22;
+  --card-border: #2b3340;
+  --card-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.35), 0 1px 2px -1px rgb(0 0 0 / 0.35);
   
-  --gradient-hero: linear-gradient(135deg, #10254d 0%, #6b1220 55%, #0b3566 100%);
+  --gradient-hero: linear-gradient(135deg, #1a1114 0%, #57121b 50%, #0f1216 100%);
 }
 
 /* Balanced utility overrides: keep blues for base accents, add brand red helpers */
@@ -132,8 +150,8 @@ html {
 
 body {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
+  background-color: var(--bg);
+  color: var(--text);
   transition: background-color 0.3s ease, color 0.3s ease;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -160,13 +178,13 @@ body {
 
 /* Selection styling */
 ::selection {
-  background-color: #0ea5e9;
+  background-color: var(--red);
   color: white;
 }
 
 /* Focus styles for accessibility */
 :focus-visible {
-  outline: 2px solid #0ea5e9;
+  outline: 2px solid var(--red);
   outline-offset: 2px;
 }
 
@@ -184,6 +202,56 @@ body {
 
 .skip-link:focus {
   top: 0;
+}
+
+/* Theme helpers */
+.theme-bg {
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+.theme-surface {
+  background-color: var(--surface);
+  color: var(--text);
+}
+
+.theme-border {
+  border-color: var(--border);
+}
+
+.theme-muted {
+  color: var(--muted);
+}
+
+/* Scroll reveal animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .animate-fade-up,
+  .animate-slide-up,
+  .animate-scale-in,
+  .animate-fade {
+    animation: none !important;
+  }
 }
 
 /* Custom animations */

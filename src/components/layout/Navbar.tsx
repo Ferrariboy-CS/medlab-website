@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '../ui/Button';
 import { ThemeToggle } from '../ui/ThemeToggle';
 import { useQuote } from '../../contexts';
-import logo from '../../assets/logo/medlab-logo.svg';
 import { 
   Bars3Icon,
   XMarkIcon,
@@ -63,8 +62,10 @@ export const Navbar: React.FC = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 group">
             <motion.img
-              src={logo}
-              alt="Medlab Services logo"
+              src="/assets/medlab-logo.svg"
+              alt="MedLab Services logo"
+              width={140}
+              height={48}
               className="h-10 w-auto md:h-12 drop-shadow-md"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
@@ -90,10 +91,10 @@ export const Navbar: React.FC = () => {
                     ${
                       isActive
                       ? isScrolled
-                        ? 'text-sky-600 dark:text-sky-400 bg-sky-50 dark:bg-sky-950/50'
+                        ? 'text-red-600 dark:text-red-300 bg-red-50 dark:bg-red-900/40'
                         : 'text-white bg-white/20'
                       : isScrolled
-                        ? 'text-gray-700 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 hover:bg-gray-50 dark:hover:bg-slate-800'
+                        ? 'text-gray-700 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-300 hover:bg-gray-50 dark:hover:bg-slate-800'
                         : 'text-white/90 hover:text-white hover:bg-white/10'
                     }
                   `
@@ -121,9 +122,9 @@ export const Navbar: React.FC = () => {
                       className="
                         absolute top-full left-0 mt-2
                         w-56 py-2
-                        bg-white dark:bg-slate-800
+                        bg-white dark:bg-slate-900
                         rounded-xl shadow-xl shadow-black/10 dark:shadow-black/30
-                        border border-gray-100 dark:border-slate-700
+                        border border-gray-100 dark:border-slate-800
                       "
                     >
                       {item.children.map((child) => (
@@ -133,8 +134,8 @@ export const Navbar: React.FC = () => {
                           className="
                             block px-4 py-2.5
                             text-sm text-gray-700 dark:text-slate-300
-                            hover:text-sky-600 dark:hover:text-sky-400
-                            hover:bg-gray-50 dark:hover:bg-slate-700/50
+                            hover:text-red-600 dark:hover:text-red-300
+                            hover:bg-gray-50 dark:hover:bg-slate-800/60
                             transition-colors
                           "
                         >
@@ -188,7 +189,7 @@ export const Navbar: React.FC = () => {
                     className="
                       absolute -top-2 -right-2
                       w-5 h-5
-                      bg-sky-500 text-white
+                      bg-red-600 text-white
                       text-xs font-bold
                       rounded-full
                       flex items-center justify-center
@@ -238,8 +239,8 @@ export const Navbar: React.FC = () => {
               <div
                 className="
                 py-4 border-t 
-                border-gray-200/50 dark:border-slate-700/50
-                bg-white/95 dark:bg-slate-900/95
+                border-gray-200/50 dark:border-slate-800/60
+                bg-white/95 dark:bg-slate-950/95
                 backdrop-blur-xl
                 -mx-4 px-4
               "
@@ -261,8 +262,8 @@ export const Navbar: React.FC = () => {
                           transition-colors
                           ${
                             isActive
-                            ? 'text-sky-600 dark:text-sky-400 bg-sky-50 dark:bg-sky-950/50'
-                            : 'text-gray-700 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 hover:bg-gray-50 dark:hover:bg-slate-800'
+                            ? 'text-red-600 dark:text-red-300 bg-red-50 dark:bg-red-900/40'
+                            : 'text-gray-700 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-300 hover:bg-gray-50 dark:hover:bg-slate-800'
                           }
                         `
                         }

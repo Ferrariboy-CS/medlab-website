@@ -30,7 +30,8 @@ export const Button: React.FC<ButtonProps> = ({
 }) => {
   const baseStyles = `
     inline-flex items-center justify-center font-semibold rounded-lg
-    transition-colors duration-200
+    transition-all duration-200
+    hover:-translate-y-0.5
     focus:outline-none focus:ring-2 focus:ring-offset-2
     disabled:opacity-50 disabled:cursor-not-allowed
   `;

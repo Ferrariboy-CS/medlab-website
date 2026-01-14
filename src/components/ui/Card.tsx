@@ -49,7 +49,7 @@ export const Card: React.FC<CardProps> = ({
     ? `
       cursor-pointer
       hover:shadow-xl dark:hover:shadow-slate-900/40
-      hover:border-sky-200 dark:hover:border-sky-800
+      hover:border-red-200 dark:hover:border-red-900/60
       hover:-translate-y-1
       transition-all dur-300 ease-smooth
     `
@@ -132,18 +132,18 @@ export const CardPlaceholder: React.FC<CardPlaceholderProps> = ({
   className = 'h-44',
 }) => (
   <div className={`
-    bg-gradient-to-br from-sky-50 to-blue-100 
-    dark:from-slate-700 dark:to-slate-600
+    bg-gradient-to-br from-rose-50 to-red-100 
+    dark:from-slate-800 dark:to-slate-700
     flex flex-col items-center justify-center gap-2
     ${className}
   `}>
     {icon && (
-      <div className="text-sky-400 dark:text-sky-300">
+      <div className="text-red-400 dark:text-red-300">
         {icon}
       </div>
     )}
     {label && (
-      <span className="text-xs text-sky-600 dark:text-sky-300 font-medium">
+      <span className="text-xs text-red-600 dark:text-red-300 font-medium">
         {label}
       </span>
     )}
@@ -214,7 +214,7 @@ export const CardBadge: React.FC<CardBadgeProps> = ({
   className = '',
 }) => {
   const variants = {
-    primary: 'bg-sky-100 text-sky-700 dark:bg-sky-900/50 dark:text-sky-300',
+    primary: 'bg-red-100 text-red-700 dark:bg-red-900/50 dark:text-rose-200',
     secondary: 'bg-gray-100 text-gray-700 dark:bg-slate-700 dark:text-slate-300',
     success: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/50 dark:text-emerald-300',
     warning: 'bg-amber-100 text-amber-700 dark:bg-amber-900/50 dark:text-amber-300',

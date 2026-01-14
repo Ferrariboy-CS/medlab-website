@@ -75,17 +75,17 @@ export const Hero: React.FC<HeroProps> = ({
       ref={heroRef}
       className={`
         relative ${heights[size]} overflow-hidden
-        bg-gradient-to-br from-slate-900 via-sky-900 to-blue-900
-        dark:from-slate-950 dark:via-slate-900 dark:to-slate-950
+        bg-gradient-to-br from-slate-950 via-rose-950 to-red-900
+        dark:from-slate-950 dark:via-rose-950 dark:to-slate-950
         ${backgroundImage ? 'hero-bg-image' : ''}
       `}
     >
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Gradient Orbs */}
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-sky-500/30 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-500/20 rounded-full blur-3xl animate-pulse animation-delay-1s" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl" />
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-red-500/25 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-rose-500/20 rounded-full blur-3xl animate-pulse animation-delay-1s" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-red-500/10 rounded-full blur-3xl" />
         
         {/* Grid Pattern */}
         {pattern && (
@@ -116,11 +116,11 @@ export const Hero: React.FC<HeroProps> = ({
           {/* Breadcrumbs */}
           {breadcrumbs && (
             <motion.nav variants={itemVariants} className="mb-6">
-              <ol className={`flex items-center space-x-2 text-sm text-sky-200/80 ${centered ? 'justify-center' : ''}`}>
+              <ol className={`flex items-center space-x-2 text-sm text-rose-200/80 ${centered ? 'justify-center' : ''}`}>
                 {breadcrumbs.map((crumb, index) => (
                   <li key={index} className="flex items-center">
                     {index > 0 && (
-                      <svg className="w-4 h-4 mx-2 text-sky-300/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-4 h-4 mx-2 text-rose-300/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>
                     )}
@@ -144,7 +144,7 @@ export const Hero: React.FC<HeroProps> = ({
           {subtitle && (
             <motion.p 
               variants={itemVariants}
-              className="text-sky-300 font-semibold mb-4 text-lg tracking-wide uppercase"
+              className="text-rose-200 font-semibold mb-4 text-lg tracking-wide uppercase"
             >
               {subtitle}
             </motion.p>
@@ -155,7 +155,7 @@ export const Hero: React.FC<HeroProps> = ({
             variants={itemVariants}
             className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight"
           >
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-sky-100 to-sky-200">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-rose-100 to-rose-200">
               {title}
             </span>
           </motion.h1>
@@ -164,7 +164,7 @@ export const Hero: React.FC<HeroProps> = ({
           {description && (
             <motion.p 
               variants={itemVariants}
-              className={`mt-6 text-lg md:text-xl text-sky-100/90 leading-relaxed max-w-2xl ${centered ? 'mx-auto' : ''}`}
+              className={`mt-6 text-lg md:text-xl text-rose-100/90 leading-relaxed max-w-2xl ${centered ? 'mx-auto' : ''}`}
             >
               {description}
             </motion.p>
@@ -184,7 +184,7 @@ export const Hero: React.FC<HeroProps> = ({
                   as="link" 
                   to={primaryCta.to} 
                   size="lg"
-                  className="shadow-2xl shadow-sky-500/20"
+                  className="shadow-2xl shadow-red-500/20"
                 >
                   {primaryCta.label}
                 </Button>
